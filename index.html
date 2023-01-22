@@ -5,45 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
+    <style>
+        .verde {
+            background-color:green
+        }
+
+        .vermelho {
+            background-color:red;
+        }
+
+        .branco {
+            background-color:white
+        }
+
+        .azul {
+            background-color:blue
+        }
+
+        .borda {
+            border:1px solid
+        }
+
+        .div-principal {
+            width:200px;
+            height: 200px;
+        }
+
+        .div-comum {
+            width:50px;
+            height: 50px;
+            display:inline-block;
+        }
+
+       </style>
     <title>teste live-server</title>
 </head>
 <body>
     <div id="app">
-        Olá {{perfil.nome}} seja bem vindo!<br/><br/>
-
-        Segue abaixo a sua lista de cursos e carga horaria:<br/><br/>
-        -- {{perfil.cursos[0].nome}} -- Carga Horiaria do curso: {{perfil.cursos[0].cargaHoraria}}
-    </div>
+        <div class="borda div-principal" :class="cor">
+            Cor: {{cor}}
+            <br/>
+            Posição X do mouse: {{posicaoX}}
+            Posição Y do mouse: {{posicaoY}}
+        </div>
+        <hr>
+        <div @click="mudarCor('verde')" class="borda div-comum"></div>
+        <div class="borda div-comum"
+                     @mouseover="mudarCor('azul')"
+                      @mouseout="mudarCor('vermelho')">
+        </div>
+        <div class="borda div-comum" @mousemove="coordenadas($event)" ></div>
+    </div>  
 
 <script>
    const vue = new Vue({
         el: '#app',
         data: {
-            mensagem: 'Primeiro Template em Vue',
-            valorSalario: 150.47,
-            usuarioLogado: true,
-            hobbies: [
-                'Dormir',
-                'Colecionar Video Games',
-                'Correr',
-                'Fazer Trilhas'
-            ],
-            perfil: {
-                nome: 'Eduardo Dahmer',
-                site: 'eduardodahmer.com.br',
-                idade: 23,
-                cursos: [
-                    {
-                        nome: 'Laravel',
-                        cargaHoraria: '50 horas'
-                    },
-                    {
-                        nome: 'Bancos de dados relacionais',
-                        cargaHoraria: '50 Horas'
-                    }
-                ]
+            cor: 'branco',
+            posicaoX : 0,
+            posicaoY: 0
+        },
+        methods: {
+            mudarCor(cor) {
+                this.cor = cor
+            },
+            coordenadas(event) { 
+                this.posicaoX = event.clientX
+                this.posicaoY = event.clientY
             }
-        }
+        },
    });
 </script>
 
