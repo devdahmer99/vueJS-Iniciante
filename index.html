@@ -41,38 +41,75 @@
     <title>teste live-server</title>
 </head>
 <body>
-    <div id="app">
-        <div class="borda div-principal" :class="cor">
-            Cor: {{cor}}
-            <br/>
-            Posição X do mouse: {{posicaoX}}
-            Posição Y do mouse: {{posicaoY}}
-        </div>
-        <hr>
-        <div @click="mudarCor('verde')" class="borda div-comum"></div>
-        <div class="borda div-comum"
-                     @mouseover="mudarCor('azul')"
-                      @mouseout="mudarCor('vermelho')">
-        </div>
-        <div class="borda div-comum" @mousemove="coordenadas($event)" ></div>
-    </div>  
+
+<div id="app">
+    <a href="https://jorgesantana.net.br" 
+    target="_blank" @click="previnirComportamentoPadrao()">
+    Link
+    </a>
+    <br>
+    Mensagem: {{ msg }}
+    <hr>
+    <button @click.once="ExecutarUmaVez()"> Botão </button>
+    <p>Clicks: {{cliques}}</p>
+    <hr>
+    <form @submit.prevent.once="previnirUmaVez()">
+        <button type="submit"> Enviar</button>
+    </form>
+    <p>Formulario: {{ formulario }}</p>
+    <hr>
+    <input type="text" @keyup.x="capturandoTeclas($event)">
+    <p>Teclas {{ teclas }}</p>
+</div>
+
+<!--    <div id="app">-->
+<!--        <div class="borda div-principal" :class="cor">-->
+<!--            Cor: {{cor}}-->
+<!--            <br/>-->
+<!--            Posição X do mouse: {{posicaoX}}-->
+<!--            Posição Y do mouse: {{posicaoY}}-->
+<!--        </div>-->
+<!--        <hr>-->
+<!--        <div @click="mudarCor('verde')" class="borda div-comum"></div>-->
+<!--        <div class="borda div-comum"-->
+<!--                     @mouseover="mudarCor('azul')"-->
+<!--                      @mouseout="mudarCor('vermelho')">-->
+<!--        </div>-->
+<!--        <div class="borda div-comum" @mousemove="coordenadas($event)" ></div>-->
+<!--    </div>  -->
 
 <script>
    const vue = new Vue({
         el: '#app',
         data: {
-            cor: 'branco',
-            posicaoX : 0,
-            posicaoY: 0
+            msg: '',
+            cliques: 0,
+            formulario: '',
+            teclas: ''
+            // cor: 'branco',
+            // posicaoX : 0,
+            // posicaoY: 0
         },
         methods: {
-            mudarCor(cor) {
-                this.cor = cor
+            previnirComportamentoPadrao() {
+                this.msg = 'Comportamento Padrão Ativado!'
             },
-            coordenadas(event) { 
-                this.posicaoX = event.clientX
-                this.posicaoY = event.clientY
+            ExecutarUmaVez() {
+                this.cliques++
+            },
+            previnirUmaVez() {
+                this.formulario = 'Previndo o comportamento padrão de envio.'
+            },
+            capturandoTeclas(event) {
+                this.teclas += event.key
             }
+            // mudarCor(cor) {
+            //     this.cor = cor
+            // },
+            // coordenadas(event) {
+            //     this.posicaoX = event.clientX
+            //     this.posicaoY = event.clientY
+            // }
         },
    });
 </script>
