@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
     <style>
-        .verde {
+      /*  .verde {
             background-color:green
         }
 
@@ -35,7 +35,7 @@
             width:50px;
             height: 50px;
             display:inline-block;
-        }
+        }*/
 
        </style>
     <title>teste live-server</title>
@@ -43,7 +43,21 @@
 <body>
 
 <div id="app">
-    <a href="https://jorgesantana.net.br" 
+    <input type="text" id="inputText">
+    <br><br>
+    <select id="options">
+        <option value="A"> Opção 1</option>
+        <option value="B"> Opção 2</option>
+        <option vClue="C"> Opção 3</option>
+    </select>
+    <br>
+    <p id="paragrafo" style="color: red;"> Paragrafo</p>
+    <button @click="selecionarElementoFilho()"> Botao para Selecionar</button>
+    <div id="bloco">
+        Conteúdo interno da div
+    </div>
+
+    <!--<a href="https://jorgesantana.net.br" 
     target="_blank" @click="previnirComportamentoPadrao()">
     Link
     </a>
@@ -60,7 +74,7 @@
     <hr>
     <input type="text" @keyup.x="capturandoTeclas($event)">
     <p>Teclas {{ teclas }}</p>
-</div>
+</div>-->
 
 <!--    <div id="app">-->
 <!--        <div class="borda div-principal" :class="cor">-->
@@ -82,16 +96,25 @@
    const vue = new Vue({
         el: '#app',
         data: {
-            msg: '',
+
+
+            /*msg: '',
             cliques: 0,
             formulario: '',
             teclas: ''
             // cor: 'branco',
             // posicaoX : 0,
-            // posicaoY: 0
+            // posicaoY: 0*/
         },
         methods: {
-            previnirComportamentoPadrao() {
+            selecionarElementoFilho() {
+               // console.log(inputText.value);
+               //console.log(options);
+               //console.log(paragrafo.style.color);
+               console.log(bloco.innerHTML)
+            }
+
+            /*previnirComportamentoPadrao() {
                 this.msg = 'Comportamento Padrão Ativado!'
             },
             ExecutarUmaVez() {
@@ -102,7 +125,7 @@
             },
             capturandoTeclas(event) {
                 this.teclas += event.key
-            }
+            }*/
             // mudarCor(cor) {
             //     this.cor = cor
             // },
