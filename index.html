@@ -40,6 +40,10 @@
         <p>Conteúdo texto ajuda</p>
     </div>
 
+    <div v-html="elementosHTML">
+        
+    </div>
+
 </div>
 
 
@@ -51,7 +55,8 @@
             exibirSaldo: false,
             idade: 0,
             nota: 0,
-            exibirTextoAjuda: false
+            exibirTextoAjuda: false,
+            elementosHTML: '<p><b>Site</b></p><a href="https://jorgesantana.net.br">Jorge Sant Ana</a>'
         },
         methods: {
             setIdade() {
