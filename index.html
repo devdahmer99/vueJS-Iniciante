@@ -30,6 +30,16 @@
     <p v-else-if="nota >= 5 && nota < 7">Aluno em recuperação!</p>
     <p v-else-if="nota >= 0 && nota < 5">Aluno Reprovado!!</p>
     <p v-else>A nota informada é inválida!</p>
+    <hr>
+    <br><br>
+    <p @mouseover="exibirTextoAjuda = true" @mouseout="exibirTextoAjuda = false">
+        Exemplo tooltip
+    </p>
+    <div v-show="exibirTextoAjuda">
+        <h3>Titulo texto ajuda</h3>
+        <p>Conteúdo texto ajuda</p>
+    </div>
+
 </div>
 
 
@@ -40,7 +50,8 @@
             saldo: 4970.00,
             exibirSaldo: false,
             idade: 0,
-            nota: 0
+            nota: 0,
+            exibirTextoAjuda: false
         },
         methods: {
             setIdade() {
